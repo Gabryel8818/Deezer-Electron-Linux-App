@@ -9,8 +9,10 @@ function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     show: true,
-    icon: path.join(__dirname, '../../assets/deezer-dock.png'),
+    icon: path.join(__dirname, '../../build/icon.png'),
   })
+
+
 
   mainWindow.webContents.session.webRequest.onBeforeSendHeaders((details, callback) => {
     details.requestHeaders['User-Agent'] = userAgent
@@ -20,10 +22,6 @@ function createWindow() {
   mainWindow.webContents.setUserAgent(userAgent)
   mainWindow.loadURL("https://www.deezer.com")
   mainWindow.maximize()
-
-  // Open the DevTools.
-   mainWindow.webContents.openDevTools()
-
   return mainWindow
 }
 

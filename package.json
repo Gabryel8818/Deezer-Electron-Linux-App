@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder"
+    "dist": "electron-builder --linux deb"
   },
   "repository": "",
   "keywords": [
@@ -19,7 +19,16 @@
   },
   "license": "MIT",
   "build": {
-    "productName": "ElectronDeezer",
+    "productName": "Deezer",
+    "directories": {
+        "buildResources": "build"
+    },
+    "linux":{
+     "target": [
+      "deb"
+    ],
+    "icon": "build/icon.icns"
+    },
     "files": [
       "**/*",
       "assets/"
