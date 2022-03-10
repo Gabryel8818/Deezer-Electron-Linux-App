@@ -1,0 +1,8 @@
+node_modules
+
+# Build
+dist
+
+# Mac
+.DS_Stores
+yarn.lock

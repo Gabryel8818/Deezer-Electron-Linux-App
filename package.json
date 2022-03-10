@@ -1,0 +1,32 @@
+{
+  "name": "electron-deezer",
+  "homepage": "https://github.com/gabryel8818",
+  "version": "0.1.5",
+  "description": "Electron deezer app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "repository": "",
+  "keywords": [
+    "Electron",
+    "Deezer"
+  ],
+  "author": {
+    "name" : "Gabriel Melo",
+    "email" : "gabriel_melo88@hotmail.com"
+  },
+  "license": "MIT",
+  "build": {
+    "productName": "ElectronDeezer",
+    "files": [
+      "**/*",
+      "assets/"
+    ]
+  },
+  "devDependencies": {
+    "electron-builder": "^22.14.13",
+    "electron": "^17.1.2"
+  }
+}
