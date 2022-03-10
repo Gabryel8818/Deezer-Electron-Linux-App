@@ -14,20 +14,20 @@
     "Deezer"
   ],
   "author": {
-    "name" : "Gabriel Melo",
-    "email" : "gabriel_melo88@hotmail.com"
+    "name": "Gabriel Melo",
+    "email": "gabriel_melo88@hotmail.com"
   },
   "license": "MIT",
   "build": {
     "productName": "Deezer",
     "directories": {
-        "buildResources": "build"
+      "buildResources": "build"
     },
-    "linux":{
-     "target": [
-      "deb"
-    ],
-    "icon": "build/icon.icns"
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "icon": "build/icon.icns"
     },
     "files": [
       "**/*",
@@ -35,7 +35,7 @@
     ]
   },
   "devDependencies": {
-    "electron-builder": "^22.14.13",
-    "electron": "^17.1.2"
+    "electron": "^17.1.2",
+    "electron-builder": "^22.14.13"
   }
 }

@@ -12,8 +12,6 @@ function createWindow() {
     icon: path.join(__dirname, '../../build/icon.png'),
   })
 
-
-
   mainWindow.webContents.session.webRequest.onBeforeSendHeaders((details, callback) => {
     details.requestHeaders['User-Agent'] = userAgent
     callback({ cancel: false, requestHeaders: details.requestHeaders })
@@ -52,4 +50,4 @@ function setWindowAutoHide() {
 }
 
 
-module.exports = { showWindow, hideWindow, toggleWindow, quit, setWindowAutoHide, createWindow, window, mainWindow }
+module.exports = { showWindow, hideWindow, toggleWindow, quit, setWindowAutoHide, createWindow, window }

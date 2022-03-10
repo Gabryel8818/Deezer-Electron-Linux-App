@@ -1,16 +1,16 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
+const { app  } = require('electron')
 const fs = require('fs')
-const { size } = require("./shared")
-const { showWindow, hideWindow, quit, window, createWindow, setWindowAutoHide, mainWindow, toggleWindow  } = require('./src/window/window.js')
-const { createTray } = require("./src/tray/tray.js")
+const { createWindow, setWindowAutoHide  } = require('./src/window/window.js')
+const { createTray, miniView } = require("./src/tray/tray.js")
 
 app.on('ready', () => {
-  createWindow()
+  const windowTeste = createWindow()
   setWindowAutoHide()
-  createTray()
+  const createdTray = createTray(windowTeste)
 })
+
+
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
