@@ -1,8 +1,8 @@
 // Modules to control application life and create native browser window
-const { app  } = require('electron')
+const { app } = require('electron')
 const fs = require('fs')
-const { createWindow, setWindowAutoHide  } = require('./src/window/window.js')
-const { createTray, miniView } = require("./src/tray/tray.js")
+const { createWindow, setWindowAutoHide } = require('./src/window/window.js')
+const { createTray } = require("./src/tray/tray.js")
 
 app.on('ready', () => {
   const windowTeste = createWindow()

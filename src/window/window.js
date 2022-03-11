@@ -12,6 +12,7 @@ function createWindow() {
     icon: path.join(__dirname, '../../build/icon.png'),
   })
 
+  // Function to allow open deezer web player webView
   mainWindow.webContents.session.webRequest.onBeforeSendHeaders((details, callback) => {
     details.requestHeaders['User-Agent'] = userAgent
     callback({ cancel: false, requestHeaders: details.requestHeaders })
