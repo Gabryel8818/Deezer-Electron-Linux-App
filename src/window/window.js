@@ -51,4 +51,4 @@ function setWindowAutoHide() {
 }
 
 
-module.exports = { showWindow, hideWindow, toggleWindow, quit, setWindowAutoHide, createWindow, window }
+module.exports = { showWindow, hideWindow, toggleWindow, quit, setWindowAutoHide, createWindow, window, mainWindow }

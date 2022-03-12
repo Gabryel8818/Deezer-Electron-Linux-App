@@ -6,7 +6,7 @@ let tray
 let isLinux = process.platform === "linux"
 
 
-function miniView(dimensions){
+function miniView(dimensions, window){
   miniView = new BrowserWindow({
     useContentSize: true,
     webPreferences: {
@@ -17,8 +17,9 @@ function miniView(dimensions){
 
   // Remove default menu in miniView Web Player
   miniView.setMenu(null)
+  miniView.webContents.openDevTools()
 
-  
+
 
   //Prevent from closing in miniview, hides instead of closing
   miniView.on("close", function (event) {
@@ -30,12 +31,9 @@ function miniView(dimensions){
   // Create browserview from load html page, in size of the screen
   const view = new BrowserView()
   miniView.setBrowserView(view)
-  miniView.setBounds({ x: dimensions.width + 1920, y: dimensions.height + 1080, width: 400, height: 300 })
+  miniView.setBounds({ x: dimensions.width + 1920, y: dimensions.height + 1080, width: 380, height: 575 })
   miniView.webContents.loadFile(path.join(__dirname, "../miniWebPlayer/index.html"))
 }
-
-
-
 
 
 function createTray(window){
@@ -76,18 +74,56 @@ function createTray(window){
       label: 'Mini View', click(){
         app.whenReady().then( async () => {
           const { screen, ipcMain } = require('electron')
+
           const primaryDisplay = screen.getPrimaryDisplay()
           miniView({ width: primaryDisplay.bounds.x, height: primaryDisplay.bounds.y})
-          const artistName = await window.webContents.executeJavaScript("dzPlayer.getArtistName();")
-          const titleTrack = await window.webContents.executeJavaScript("dzPlayer.getAlbumTitle();")
-          const song = await window.webContents.executeJavaScript("dzPlayer.getCurrentSong();")
-          
-          
+
           // Send title song on process main for renderer process
-          ipcMain.on('title', (event, data) => {
-            const value = {artist:`${artistName}`,titleTrack: `${titleTrack}`,imageSong: `https://api.deezer.com/album/${song.ALB_ID}/image` }
+          ipcMain.on('title', async (event, data) => {
+            const artistName = await window.webContents.executeJavaScript("dzPlayer.getArtistName();")
+            const titleTrack = await window.webContents.executeJavaScript("dzPlayer.getAlbumTitle();")
+            const song = await window.webContents.executeJavaScript("dzPlayer.getCurrentSong();")
+
+            const value = {artist:`${artistName}`,titleTrack: `${titleTrack}`,imageSong: `https://api.deezer.com/album/${song.ALB_ID}/image?size=big` }
             event.reply(data.waitingEventName, value);
+          });
+
+
+           // Send next Song function
+          ipcMain.on('next-song', async (event, data) => {
+              const nextSong = window.webContents.executeJavaScript("dzPlayer.control.nextSong();")
+              const artistName = await window.webContents.executeJavaScript("dzPlayer.getArtistName();")
+              const titleTrack = await window.webContents.executeJavaScript("dzPlayer.getAlbumTitle();")
+              const song = await window.webContents.executeJavaScript("dzPlayer.getCurrentSong();")
+
+              console.log(`Artista: ${artistName} Titulo: ${titleTrack}`)
+
+              const value = {artist:`${artistName}`,titleTrack: `${titleTrack}`,imageSong: `https://api.deezer.com/album/${song.ALB_ID}/image?size=big` }
+              event.reply(data.waitingEventName, value);
+
+          });
+
+          // Send Prev Song
+          ipcMain.on('prev-song', async (event, data) => {
+            const nextSong = window.webContents.executeJavaScript("dzPlayer.control.prevSong();")
+            const artistName = await window.webContents.executeJavaScript("dzPlayer.getArtistName();")
+            const titleTrack = await window.webContents.executeJavaScript("dzPlayer.getAlbumTitle();")
+            const song = await window.webContents.executeJavaScript("dzPlayer.getCurrentSong();")
+
+            console.log(`Artista: ${artistName} Titulo: ${titleTrack}`)
+
+            const value = {artist:`${artistName}`,titleTrack: `${titleTrack}`,imageSong: `https://api.deezer.com/album/${song.ALB_ID}/image?size=big` }
+            event.reply(data.waitingEventName, value);
+
         });
+
+        ipcMain.on('play-pause-song', async (event, data) => {
+          window.webContents.executeJavaScript("dzPlayer.control.togglePause();")
+          let status = pause;
+          event.reply(data.waitingEventName, status);
+
+      });
+
          })
        }
     },

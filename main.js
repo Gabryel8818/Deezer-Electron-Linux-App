@@ -4,10 +4,12 @@ const fs = require('fs')
 const { createWindow, setWindowAutoHide } = require('./src/window/window.js')
 const { createTray } = require("./src/tray/tray.js")
 
+
 app.on('ready', () => {
-  const windowTeste = createWindow()
+  var windowTeste = createWindow()
   setWindowAutoHide()
   const createdTray = createTray(windowTeste)
+
 })
 
 
