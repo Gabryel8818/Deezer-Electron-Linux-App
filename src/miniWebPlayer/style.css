@@ -14,6 +14,7 @@
   --violet: #9f6ea3;
   --lightblack: #515C6F;
   --white: #ffffff;
+  --black: #000;
   --darkwhite: #cecaca;
   --pinkshadow: #ffcbdd;
   --lightbshadow: rgba(0,0,0,0.15);
@@ -97,7 +98,7 @@ body{
   width: 0%;
   position: relative;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--pink) 0%, var(--violet) 100%);
+  background: var(--darkwhite);
 }
 .progress-bar::before{
   content: "";
@@ -131,7 +132,7 @@ body{
 .controls i{
   font-size: 28px;
   user-select: none;
-  background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+  background-color: var(--black);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -154,10 +155,15 @@ body{
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);
-  box-shadow: 0px 0px 5px var(--pink);
+  /*background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);*/
+  /*box-shadow: 0px 0px 5px var(--pink);*/
 }
-.play-pause::before{
+
+.controls #play_arrow {
+  font-size: 80px;
+}
+
+/*.play-pause::before{
   position: absolute;
   content: "";
   height: 43px;
@@ -175,7 +181,7 @@ body{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: absolute;
-}
+}*/
 
 .music-list{
   position: absolute;

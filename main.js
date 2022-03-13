@@ -4,6 +4,7 @@ const fs = require('fs')
 const { createWindow, setWindowAutoHide } = require('./src/window/window.js')
 const { createTray } = require("./src/tray/tray.js")
 
+require('electron-reload')(__dirname)
 
 app.on('ready', () => {
   var windowTeste = createWindow()
