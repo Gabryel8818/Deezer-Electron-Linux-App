@@ -1,4 +1,4 @@
-
+ 
 const path  = require('path');
 const { ipcRenderer, remote } = require('electron')
 //const { createWindow } = remote ;
@@ -87,7 +87,7 @@ prevBtn.addEventListener("click", () => {
             document.getElementById("play_arrow").style.display = "block"
             document.getElementById("pause_arrow").style.display = "none"
 
-        }else if(value.status =="played"){
+        }else if(value.status === "played"){
           value.status == "paused"
           document.getElementById("play_arrow").style.display = "none"
           document.getElementById("pause_arrow").style.display = "block"

@@ -7,14 +7,21 @@
   <title>Music Player | CodingNepal</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <div class="wrapper">
     <div class="top-bar">
       <i class="material-icons">expand_more</i>
       <span id="title">Now Playing</span>
-      <i class="material-icons">more_horiz</i>
+      <input type="checkbox" class="btn_dark_mode" id="btn_dark_mode">
+      <label for="btn_dark_mode" class="label_dark_mode">
+        <i class="material-icons moon" id="dark_mode_icons">dark_mode</i>
+        <i class="material-icons sun" id="dark_mode_icons">light_mode</i>
+        <div class="ball"></div>
+      </label>
     </div>
+
     <div class="img-area">
       <img src="" alt="">
     </div>
@@ -35,8 +42,7 @@
       <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
       <i id="prev" class="material-icons">skip_previous</i>
       <div class="play-pause">
-        <i class="material-icons play" id="play_arrow">play_arrow</i>
-        <!-- <i class="material-icons play" id="pause_arrow">pause_arrow</i> -->
+        <i class="material-icons" id="play_pause_icon">pause</i>
       </div>
       <i id="next" class="material-icons">skip_next</i>
       <i id="more-music" class="material-icons">queue_music</i>
@@ -56,7 +62,7 @@
   </div>
   <script>
     window.api.loadscript('./index.js');
-</script>
+  </script>
 
   </script>
 </body>

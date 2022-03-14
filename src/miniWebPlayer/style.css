@@ -5,27 +5,32 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 *::before, *::after{
   padding: 0;
   margin: 0;
 }
+
 :root{
   --pink: #ff74a4;
   --violet: #9f6ea3;
   --lightblack: #515C6F;
   --white: #ffffff;
   --black: #000;
+  --darkmode: #121116;
   --darkwhite: #cecaca;
   --pinkshadow: #ffcbdd;
   --lightbshadow: rgba(0,0,0,0.15);
 }
+
 body{
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #ffffff;
+  background-color: #ffffff;
 }
+
 .wrapper{
   width: 380px;
   padding: 25px 30px;
@@ -36,9 +41,11 @@ body{
   flex-direction: column;
   align-items: center;
 }
+
 .wrapper i{
   cursor: pointer;
 }
+
 .top-bar, .progress-area .song-timer,
 .controls, .music-list .header, .music-list ul li{
   display: flex;
@@ -46,18 +53,78 @@ body{
   justify-content: space-between;
   width: 100%;
 }
+
 .top-bar i{
   font-size: 30px;
   color: var(--lightblack);
 }
+
 .top-bar i:first-child{
   margin-left: -7px;
 }
+
 .top-bar span{
   font-size: 18px;
   margin-left: -3px;
   color: var(--lightblack);
 }
+
+.top-bar .darkmode {
+  position: relative;
+  display: flex;
+}
+
+.btn_dark_mode {
+  display: flex;
+  opacity: 0;
+  position: absolute;
+}
+
+.btn_dark_mode:checked + .label_dark_mode .ball{
+  transform: translateX(14px);
+}
+
+.label_dark_mode {
+  position: relative;
+  width: 30px;
+  height: 16px;
+  background-color: var(--darkwhite);
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px;
+  transform: scale(1.5);
+}
+
+.label_dark_mode i:first-child{
+  margin-left: 0;
+}
+
+#dark_mode_icons {
+  font-size: 8px;
+}
+
+.label_dark_mode .sun {
+  color: yellow;
+}
+
+.label_dark_mode .moon {
+  color: var(--violet);
+}
+
+.ball {
+  display: flex;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
 .img-area{
   width: 200px;
   height: 200px;
@@ -66,15 +133,18 @@ body{
   border-radius: 15px;
   box-shadow: 0px 6px 12px var(--lightbshadow);
 }
+
 .img-area img{
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .song-details{
   text-align: center;
   margin: 30px 0;
 }
+
 .song-details p{
   color: var(--lightblack);
 }
@@ -159,7 +229,7 @@ body{
   /*box-shadow: 0px 0px 5px var(--pink);*/
 }
 
-.controls #play_arrow {
+.controls #play_pause_icon{
   font-size: 80px;
 }
 
@@ -250,4 +320,36 @@ ul li .audio-duration{
 ul li.playing{
   pointer-events: none;
   color: var(--violet);
+}
+
+
+/* TODAS AS ALTERAÇÕES DE CORES DO DARK MODE */
+
+body.dark {
+  background-color: var(--darkmode);
+}
+
+body.dark .wrapper {
+  background-color: var(--darkmode);
+}
+
+body.dark .label_dark_mode {
+  background-color: var(--pink);
+}
+
+body.dark .label_dark_mode .sun {
+  color: yellow;
+}
+
+body.dark .label_dark_mode .moon {
+  color: var(--violet);
+}
+
+body.dark .top-bar i, body.dark .top-bar span, body.dark .song-details p, 
+body.dark .song-timer span {
+  color: var(--white); 
+}
+
+body.dark .controls i {
+  background-color: var(--white);
 }
