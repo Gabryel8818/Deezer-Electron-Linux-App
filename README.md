@@ -10,7 +10,7 @@ Primeiro é preciso ter o node e yar/npm instalados na sua máquina
 ```
 yarn install - instala as dependências necessárias
 yarn start   - roda o programa
-yarn dist    - cria o binário debian pra linux na pasta dist
+yarn build-(deb|pacman)  - cria o binário debian pra linux na pasta dist
 ```
 
 
