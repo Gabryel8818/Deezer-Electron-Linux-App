@@ -6,7 +6,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --linux deb"
+    "build-deb": "electron-builder --linux deb",
+    "build-pacman": "electron-builder --linux pacman"
   },
   "repository": "",
   "keywords": [
@@ -25,6 +26,7 @@
     },
     "linux": {
       "target": [
+        "pacman",
         "deb"
       ],
       "icon": "build/icon.icns"
